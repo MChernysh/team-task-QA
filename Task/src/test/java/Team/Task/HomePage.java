@@ -31,7 +31,24 @@ public class HomePage {
 		
 	}
 	
+	public void sendText(String xpath, String text) {
 		
+		isElementPresent(By.xpath(xpath));
+		driver.findElement(By.xpath(xpath)).sendKeys(text);
 	}
+
+	public ResultPage clickElement(String xpath){
+		
+		isElementPresent(By.xpath(xpath));
+		driver.findElement(By.xpath(xpath)).click();
+		return new ResultPage(driver);
+	}
+	
+	public void clearTextBox(String xpath){
+		
+		isElementPresent(By.xpath(xpath));
+		driver.findElement(By.xpath(xpath)).clear();
+	}
+}
 	
 	
