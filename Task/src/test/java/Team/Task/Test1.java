@@ -26,8 +26,8 @@ public class Test1 {
   
   @Test
   public void validateFirstTab(){
-	  HomePage HomePage = new HomePage(driver);
-	  HomePage.SignIN("testatqc@gmail.com", "IF-025.ATQC");
+	  HomePage1 HomePage1 = new HomePage1(driver);
+	  HomePage1.SignIN("testatqc@gmail.com", "IF-025.ATQC");
 	  
   }
   

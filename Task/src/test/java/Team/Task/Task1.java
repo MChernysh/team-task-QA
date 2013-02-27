@@ -17,10 +17,10 @@ public class Task1 {
 	@Test
 	public void verifySignIn() {
 
-		HomePage homePage = new HomePage(driver);
-		homePage.SignIN(login, password);
+		HomePage1 homePage1 = new HomePage1(driver);
+		homePage1.SignIN(login, password);
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
-		PersonalPage personalPage = homePage.goToPersonalPage();
+		PersonalPage personalPage = homePage1.goToPersonalPage();
 		driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 		personalPage.goToWishList();
 		//personalPage.signOut();

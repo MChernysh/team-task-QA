@@ -9,10 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
+public class HomePage1 {
 	
 	private WebDriver driver;
-	public HomePage(WebDriver driver) {
+	public HomePage1(WebDriver driver) {
 		this.driver = driver;
 	}
 	public void SignIN(String login, String password) {
@@ -42,7 +42,24 @@ public class HomePage {
 		
 	}
 	
+	public void sendText(String xpath, String text) {
 		
+		isElementPresent(By.xpath(xpath));
+		driver.findElement(By.xpath(xpath)).sendKeys(text);
 	}
+
+	public ResultPage clickElement(String xpath){
+		
+		isElementPresent(By.xpath(xpath));
+		driver.findElement(By.xpath(xpath)).click();
+		return new ResultPage(driver);
+	}
+	
+	public void clearTextBox(String xpath){
+		
+		isElementPresent(By.xpath(xpath));
+		driver.findElement(By.xpath(xpath)).clear();
+	}
+}
 	
 	
