@@ -11,7 +11,7 @@
   <url>http://maven.apache.org</url>
 
    <properties>
-        <seleniumVersion>2.22.0</seleniumVersion>
+        <seleniumVersion>2.30.0</seleniumVersion>
         <junit.version>4.8.2</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -75,11 +75,11 @@
             <artifactId>testng</artifactId>
             <version>6.8</version>
         </dependency>
-		<dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-<artifactId>selenium-server-standalone</artifactId>
-<version>2.28.0</version>
-    </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>2.30.0</version>
+        </dependency>
 
 
     </dependencies>
