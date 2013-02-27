@@ -19,7 +19,7 @@ public class Task1 {
 
 		HomePage homePage = new HomePage(driver);
 		homePage.SignIN(login, password);
-		PersonalPage personalPage = homePage.goToPersonalPage();	
+		PersonalPage personalPage = homePage.goToPersonalPage();
 		personalPage.goToWishList();
 		//personalPage.signOut();
 
@@ -30,8 +30,9 @@ public class Task1 {
 	public void beforeTest() {
 		//System.setProperty("webdriver.firefox.bin",
 			//s	"C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-	  
+		
 		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://rozetka.com.ua");
 
 	}
