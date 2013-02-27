@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="13893" started-at="2013-02-27T15:28:22Z" finished-at="2013-02-27T15:28:36Z">
+  <suite name="Default suite" duration-ms="18291" started-at="2013-02-27T17:57:23Z" finished-at="2013-02-27T17:57:42Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="13893" started-at="2013-02-27T15:28:22Z" finished-at="2013-02-27T15:28:36Z">
+    <test name="Default test" duration-ms="18291" started-at="2013-02-27T17:57:23Z" finished-at="2013-02-27T17:57:42Z">
       <class name="Team.Task.Task1">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:Team.Task.Task1@1e4605c]" name="beforeTest" is-config="true" duration-ms="8912" started-at="2013-02-27T17:28:22Z" finished-at="2013-02-27T17:28:31Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:Team.Task.Task1@1d47845]" name="beforeTest" is-config="true" duration-ms="12732" started-at="2013-02-27T19:57:23Z" finished-at="2013-02-27T19:57:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="verifySignIn()[pri:0, instance:Team.Task.Task1@1e4605c]" name="verifySignIn" duration-ms="4922" started-at="2013-02-27T17:28:31Z" finished-at="2013-02-27T17:28:36Z">
+        <test-method status="PASS" signature="verifySignIn()[pri:0, instance:Team.Task.Task1@1d47845]" name="verifySignIn" duration-ms="5473" started-at="2013-02-27T19:57:36Z" finished-at="2013-02-27T19:57:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySignIn -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:Team.Task.Task1@1e4605c]" name="afterTest" is-config="true" duration-ms="0" started-at="2013-02-27T17:28:36Z" finished-at="2013-02-27T17:28:36Z">
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:Team.Task.Task1@1d47845]" name="afterTest" is-config="true" duration-ms="0" started-at="2013-02-27T19:57:42Z" finished-at="2013-02-27T19:57:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

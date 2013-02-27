@@ -4,11 +4,5 @@
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
-	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
-<<<<<<< HEAD
-=======
-	<classpathentry kind="lib" path="/mnt/hd1/eclipse_libs/selenium/selenium-java-2.30.0.jar"/>
->>>>>>> 9de347a7f1265a5ab56b4caa6d389bc62b21d846
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
