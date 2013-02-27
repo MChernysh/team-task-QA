@@ -19,9 +19,7 @@ public class Task1 {
 
 		HomePage homePage = new HomePage(driver);
 		homePage.SignIN(login, password);
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
-		PersonalPage personalPage = homePage.goToPersonalPage();
-		driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+		PersonalPage personalPage = homePage.goToPersonalPage();	
 		personalPage.goToWishList();
 		//personalPage.signOut();
 
