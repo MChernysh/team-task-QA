@@ -18,23 +18,24 @@ public class Task7{
 
 	private FirefoxDriver driver = new FirefoxDriver();
 	
-	String searchTerm = "samsung";
+	private String searchTerm = "samsung";
 	
 	HomePage home = new HomePage(driver);
 
 	
 	@BeforeClass
-		public void setUp(){
+	public void setUp(){
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("http://rozetka.com.ua");
 		
+		//sign in and close the annoying social media pop up
 		home.SignIN("testatqc@gmail.com", "IF-025.ATQC");
-		home.clickElement(".//a[@name=\"close\"]");											// close the annoying social media pop up
+		home.clickElement(".//a[@name=\"close\"]");		
 	}
 	
 	@AfterClass
-		public void tearDown(){
+	public void tearDown(){
 		
 		driver.close();
 		
@@ -43,33 +44,42 @@ public class Task7{
 	@Test
 	public void Task7_Test(){
 		
-		home.clearTextBox(".//div//input[@class=\"text\"]"); 								// clear text box
-		home.sendText(".//div//input[@class=\"text\"]", searchTerm); 						// search for "samsung"
+		// clear the text box and search for the searchTerm
+		home.clearTextBox(".//div//input[@class=\"text\"]");
+		home.sendText(".//div//input[@class=\"text\"]", searchTerm); 						
 		
-		ResultPage result = home.clickElement(".//button[@type=\"submit\"]"); 				// click "Submit"
-		AssertJUnit.assertTrue(searchTerm.equals(result.getElementText(".//h1/span"))); 	// check if "samsung" is in the search 
-																							// results
-		
-		String color = driver.findElement(By.xpath(".//h1/span")).getCssValue("color");		// get element color
-		AssertJUnit.assertTrue(color.equals("rgba(50, 154, 28, 1)"));						// check the color
+		// click "Submit" button and verify whether search results contain the searchTerm
+		ResultPage result = home.clickElement(".//button[@type=\"submit\"]"); 				
+		AssertJUnit.assertTrue(searchTerm.equals(result.getElementText(".//h1/span"))); 	 
+
+		// get the element's color and verify it
+		String color = driver.findElement(By.xpath(".//h1/span")).getCssValue("color");	
+		AssertJUnit.assertTrue(color.equals("rgba(50, 154, 28, 1)"));						
 			
-		for(int i = 3; i <= 5; i++) {														// choose the search results
-																							// and add to the wish list 
+		// get 3..5 search results and store them to the wish list
+		for(int i = 3; i <= 5; i++) {														
+																							 
 			result.clickElement(".//table["+i+"]//a[@name=\"towishlist\"]"); 				
 			result.clearTextBox(".//input[@name=\"wishlist_title\"]");
 			result.sendText(".//input[@name=\"wishlist_title\"]", "Список желаний "+ (i-2));
 			result.clickElement(".//div[@class=\"submit\"]/button[@type=\"submit\"]");
 	
-			if(i < 5) result.clickElement(".//a[@name=\"close\"]");
+		  if(i < 5) 
+			result.clickElement(".//a[@name=\"close\"]");
 		}
-	
-		result.clickElement(".//div[@class=\"comment\"]/a[@class=\"underline\"]");			// go to the wish list from the pop up
+		
+		// visit the wish list page from the pop up
+		result.clickElement(".//div[@class=\"comment\"]/a[@class=\"underline\"]");			
 
-		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);				// make a screenshot
+		//make a screenshot and save it to the project's directory
+		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);	
 		try {
 			FileUtils.copyFile(file, new File("Task_7 - Screenshot.png"));
-		} catch (IOException e) { e.printStackTrace(); }
+		} 
+		catch (IOException e) 
+		{ 
+			e.printStackTrace(); 
+		} 
 	}	
-	
 }
 
