@@ -1,4 +1,4 @@
-package Orest.Diachok;
+package Team.Task;
 
 
 
@@ -26,7 +26,10 @@ driver.findElement(By.name("password")).sendKeys(password);
 isElementPresent(By.xpath("//*[text()='Войти']"));
 driver.findElement(By.xpath("//*[text()='Войти']")).click();
 }
-
+public void LogOut(){
+	 isElementPresent(By.name("signout"));
+	 driver.findElement(By.name("signout")).click();
+}
 
 
 

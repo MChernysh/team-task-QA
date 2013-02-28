@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14284" started-at="2013-02-27T18:42:32Z" finished-at="2013-02-27T18:42:46Z">
+  <suite name="Default suite" duration-ms="13531" started-at="2013-02-28T10:24:06Z" finished-at="2013-02-28T10:24:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="14284" started-at="2013-02-27T18:42:32Z" finished-at="2013-02-27T18:42:46Z">
-      <class name="Team.Task.Task1">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:Team.Task.Task1@13d6d53]" name="beforeTest" is-config="true" duration-ms="7760" started-at="2013-02-27T20:42:32Z" finished-at="2013-02-27T20:42:40Z">
+    <test name="Default test" duration-ms="13531" started-at="2013-02-28T10:24:06Z" finished-at="2013-02-28T10:24:19Z">
+      <class name="Team.Task.Task6">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Team.Task.Task6@99f610]" name="setUp" is-config="true" duration-ms="8047" started-at="2013-02-28T12:24:06Z" finished-at="2013-02-28T12:24:14Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="verifySignIn()[pri:0, instance:Team.Task.Task1@13d6d53]" name="verifySignIn" duration-ms="6506" started-at="2013-02-27T20:42:40Z" finished-at="2013-02-27T20:42:46Z">
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="LoginAc()[pri:0, instance:Team.Task.Task6@99f610]" name="LoginAc" duration-ms="4781" started-at="2013-02-28T12:24:14Z" finished-at="2013-02-28T12:24:18Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySignIn -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:Team.Task.Task1@13d6d53]" name="afterTest" is-config="true" duration-ms="1" started-at="2013-02-27T20:42:46Z" finished-at="2013-02-27T20:42:46Z">
+        </test-method> <!-- LoginAc -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Team.Task.Task6@99f610]" name="tearDown" is-config="true" duration-ms="687" started-at="2013-02-28T12:24:18Z" finished-at="2013-02-28T12:24:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterTest -->
-      </class> <!-- Team.Task.Task1 -->
+        </test-method> <!-- tearDown -->
+      </class> <!-- Team.Task.Task6 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
