@@ -2,6 +2,7 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
+<<<<<<< HEAD
   <suite name="Default suite" duration-ms="98470" started-at="2013-02-28T19:15:15Z" finished-at="2013-02-28T19:16:53Z">
     <groups>
     </groups>
@@ -20,6 +21,26 @@
           </reporter-output>
         </test-method> <!-- ShutDown -->
       </class> <!-- Team.Task.TestCase10 -->
+=======
+  <suite name="Default suite" duration-ms="13531" started-at="2013-02-28T10:24:06Z" finished-at="2013-02-28T10:24:19Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="13531" started-at="2013-02-28T10:24:06Z" finished-at="2013-02-28T10:24:19Z">
+      <class name="Team.Task.Task6">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Team.Task.Task6@99f610]" name="setUp" is-config="true" duration-ms="8047" started-at="2013-02-28T12:24:06Z" finished-at="2013-02-28T12:24:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="LoginAc()[pri:0, instance:Team.Task.Task6@99f610]" name="LoginAc" duration-ms="4781" started-at="2013-02-28T12:24:14Z" finished-at="2013-02-28T12:24:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginAc -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Team.Task.Task6@99f610]" name="tearDown" is-config="true" duration-ms="687" started-at="2013-02-28T12:24:18Z" finished-at="2013-02-28T12:24:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Team.Task.Task6 -->
+>>>>>>> aecd721f161dc4466b18b76ede460ff6bac5d511
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
