@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="98470" started-at="2013-02-28T19:15:15Z" finished-at="2013-02-28T19:16:53Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="98470" started-at="2013-02-28T19:15:15Z" finished-at="2013-02-28T19:16:53Z">
+      <class name="Team.Task.TestCase10">
+        <test-method status="PASS" signature="StartUp()[pri:0, instance:Team.Task.TestCase10@45500f57]" name="StartUp" is-config="true" duration-ms="16879" started-at="2013-02-28T21:15:15Z" finished-at="2013-02-28T21:15:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartUp -->
+        <test-method status="PASS" signature="testCase10()[pri:0, instance:Team.Task.TestCase10@45500f57]" name="testCase10" duration-ms="81143" started-at="2013-02-28T21:15:32Z" finished-at="2013-02-28T21:16:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase10 -->
+        <test-method status="PASS" signature="ShutDown()[pri:0, instance:Team.Task.TestCase10@45500f57]" name="ShutDown" is-config="true" duration-ms="403" started-at="2013-02-28T21:16:53Z" finished-at="2013-02-28T21:16:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ShutDown -->
+      </class> <!-- Team.Task.TestCase10 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
