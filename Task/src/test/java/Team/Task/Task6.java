@@ -1,4 +1,4 @@
-package Orest.Diachok;
+package Team.Task;
 
 
 
@@ -18,7 +18,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class test6 {
+public class Task6 {
 	private String login = "testatqc@gmail.com";
 	private String password = "IF-025.ATQC";
 	private WebDriver driver;
@@ -33,6 +33,7 @@ String color = driver.findElement(By.xpath(".//*[@id='head_banner']/a")).getCssV
 AssertJUnit.assertTrue(color.equals("rgba(50, 154, 28, 1)"));
 String toolbarcolor = driver.findElement(By.className("hdr-tools")).getCssValue("background-color");
 AssertJUnit.assertTrue(toolbarcolor.equals("rgba(17, 73, 137, 1)"));
+log.LogOut();
 }
 	@BeforeTest
 	public void setUp(){

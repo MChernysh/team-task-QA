@@ -4,6 +4,7 @@
   <test name="Test">
     <classes>
    	  <class name="Team.Task.Task1"/>
+   	  <class name="Team.Task.Task6"/>
       <class name="Team.Task.Task7"/>
     </classes>
   </test> <!-- Test -->

@@ -5,6 +5,7 @@
       <![CDATA[Rozetka.com.ua has 60new cetegories]]>
     </line>
   </reporter-output>
+<<<<<<< HEAD
   <suite name="Default suite" duration-ms="15727" started-at="2013-03-01T09:30:12Z" finished-at="2013-03-01T09:30:27Z">
     <groups>
     </groups>
@@ -15,17 +16,59 @@
           </reporter-output>
         </test-method> <!-- setUP -->
         <test-method status="PASS" signature="verifySignIn()[pri:0, instance:Team.Task.Task5@13d6d53]" name="verifySignIn" duration-ms="2932" started-at="2013-03-01T11:30:24Z" finished-at="2013-03-01T11:30:27Z">
+=======
+<<<<<<< HEAD
+  <suite name="Default suite" duration-ms="98470" started-at="2013-02-28T19:15:15Z" finished-at="2013-02-28T19:16:53Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="98470" started-at="2013-02-28T19:15:15Z" finished-at="2013-02-28T19:16:53Z">
+      <class name="Team.Task.TestCase10">
+        <test-method status="PASS" signature="StartUp()[pri:0, instance:Team.Task.TestCase10@45500f57]" name="StartUp" is-config="true" duration-ms="16879" started-at="2013-02-28T21:15:15Z" finished-at="2013-02-28T21:15:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartUp -->
+        <test-method status="PASS" signature="testCase10()[pri:0, instance:Team.Task.TestCase10@45500f57]" name="testCase10" duration-ms="81143" started-at="2013-02-28T21:15:32Z" finished-at="2013-02-28T21:16:53Z">
+>>>>>>> d10a7401a98ffb37d100acca32876435e572902c
           <reporter-output>
             <line>
               <![CDATA[Rozetka.com.ua has 60new cetegories]]>
             </line>
           </reporter-output>
+<<<<<<< HEAD
         </test-method> <!-- verifySignIn -->
         <test-method status="PASS" signature="turnDown()[pri:0, instance:Team.Task.Task5@13d6d53]" name="turnDown" is-config="true" duration-ms="140" started-at="2013-03-01T11:30:27Z" finished-at="2013-03-01T11:30:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- turnDown -->
       </class> <!-- Team.Task.Task5 -->
+=======
+        </test-method> <!-- testCase10 -->
+        <test-method status="PASS" signature="ShutDown()[pri:0, instance:Team.Task.TestCase10@45500f57]" name="ShutDown" is-config="true" duration-ms="403" started-at="2013-02-28T21:16:53Z" finished-at="2013-02-28T21:16:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ShutDown -->
+      </class> <!-- Team.Task.TestCase10 -->
+=======
+  <suite name="Default suite" duration-ms="13531" started-at="2013-02-28T10:24:06Z" finished-at="2013-02-28T10:24:19Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="13531" started-at="2013-02-28T10:24:06Z" finished-at="2013-02-28T10:24:19Z">
+      <class name="Team.Task.Task6">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Team.Task.Task6@99f610]" name="setUp" is-config="true" duration-ms="8047" started-at="2013-02-28T12:24:06Z" finished-at="2013-02-28T12:24:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="LoginAc()[pri:0, instance:Team.Task.Task6@99f610]" name="LoginAc" duration-ms="4781" started-at="2013-02-28T12:24:14Z" finished-at="2013-02-28T12:24:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginAc -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Team.Task.Task6@99f610]" name="tearDown" is-config="true" duration-ms="687" started-at="2013-02-28T12:24:18Z" finished-at="2013-02-28T12:24:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Team.Task.Task6 -->
+>>>>>>> aecd721f161dc4466b18b76ede460ff6bac5d511
+>>>>>>> d10a7401a98ffb37d100acca32876435e572902c
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

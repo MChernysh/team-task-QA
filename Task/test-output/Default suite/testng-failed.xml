@@ -3,11 +3,28 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="Team.Task.Task5">
+=======
+<<<<<<< HEAD
+      <class name="Team.Task.TestCase10">
+        <methods>
+          <include name="StartUp"/>
+          <include name="testCase10"/>
+        </methods>
+      </class> <!-- Team.Task.TestCase10 -->
+=======
+      <class name="Team.Task.Task1">
+>>>>>>> d10a7401a98ffb37d100acca32876435e572902c
         <methods>
           <include name="newCategoryCount"/>
         </methods>
+<<<<<<< HEAD
       </class> <!-- Team.Task.Task5 -->
+=======
+      </class> <!-- Team.Task.Task1 -->
+>>>>>>> aecd721f161dc4466b18b76ede460ff6bac5d511
+>>>>>>> d10a7401a98ffb37d100acca32876435e572902c
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
