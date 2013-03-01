@@ -1,5 +1,4 @@
 package Team.Task;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,23 +11,23 @@ public class ResultPage {
 		this.driver = driver;
 	}
 	
-	String getElementText(String xpath){
+	String getElementText(By by){
 		
-		return driver.findElement(By.xpath(xpath)).getText();
+		return driver.findElement(by).getText();
 	}
 	
-	public void clickElement(String xpath){
+	public void clickElement(By by){
 		
-		driver.findElement(By.xpath(xpath)).click();
+		driver.findElement(by).click();
 	}
 	
-	public void sendText(String xpath, String text) {
+	public void sendText(By by, String text) {
 		
-		driver.findElement(By.xpath(xpath)).sendKeys(text);
+		driver.findElement(by).sendKeys(text);
 	}
 	
-	public void clearTextBox(String xpath){
+	public void clearTextBox(By by){
 		
-		driver.findElement(By.xpath(xpath)).clear();
+		driver.findElement(by).clear();
 	}
 }

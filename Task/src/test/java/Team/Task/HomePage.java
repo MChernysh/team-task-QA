@@ -1,6 +1,5 @@
 package Team.Task;
 
-
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -51,23 +50,34 @@ public class HomePage {
 
 	}
 
-	public void sendText(String xpath, String text) {
-
-		isElementPresent(By.xpath(xpath));
-		driver.findElement(By.xpath(xpath)).sendKeys(text);
+	public void sendText(By by, String text) {
+		
+		isElementPresent(by);
+		driver.findElement(by).sendKeys(text);
 	}
 
-	public ResultPage clickElement(String xpath){
-
-		isElementPresent(By.xpath(xpath));
-		driver.findElement(By.xpath(xpath)).click();
+	public ResultPage clickElement(By by){
+		
+		isElementPresent(by);
+		driver.findElement(by).click();
 		return new ResultPage(driver);
 	}
-
-	public void clearTextBox(String xpath){
-
-		isElementPresent(By.xpath(xpath));
-		driver.findElement(By.xpath(xpath)).clear();
+	
+	public void clearTextBox(By by){
+		
+		isElementPresent(by);
+		driver.findElement(by).clear();
+	}
+	
+	public void deleteWishLists(By by){
+			
+		if (!driver.findElements(by).isEmpty()){
+			
+			int count = driver.findElements(by).size();
+		
+			for(int j = 0; j < count; j++) 
+				driver.findElement(by).click();
+		}
 	}
 }
 
