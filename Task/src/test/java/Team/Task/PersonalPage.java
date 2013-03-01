@@ -15,12 +15,9 @@ public class PersonalPage {
 	public void goToWishList(){
 		
 		driver.findElement(By.linkText("Списки желаний")).click();
-	//	driver.get("http://my.rozetka.com.ua/profile/wishlists/");
+	//driver.get("http://my.rozetka.com.ua/profile/wishlists/");
 	}
-	public void signOut(){
-		 isElementPresent(By.name("signout"));
-		 driver.findElement(By.name("signout")).click();
-	}
+
 	private void isElementPresent(By by) {
 		List<WebElement> act = driver.findElements(by);
 		if (act.isEmpty()){

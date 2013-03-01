@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
+    <line>
+      <![CDATA[Rozetka.com.ua has 60new cetegories]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14284" started-at="2013-02-27T18:42:32Z" finished-at="2013-02-27T18:42:46Z">
+  <suite name="Default suite" duration-ms="15727" started-at="2013-03-01T09:30:12Z" finished-at="2013-03-01T09:30:27Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="14284" started-at="2013-02-27T18:42:32Z" finished-at="2013-02-27T18:42:46Z">
-      <class name="Team.Task.Task1">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:Team.Task.Task1@13d6d53]" name="beforeTest" is-config="true" duration-ms="7760" started-at="2013-02-27T20:42:32Z" finished-at="2013-02-27T20:42:40Z">
+    <test name="Default test" duration-ms="15727" started-at="2013-03-01T09:30:12Z" finished-at="2013-03-01T09:30:27Z">
+      <class name="Team.Task.Task5">
+        <test-method status="PASS" signature="setUP()[pri:0, instance:Team.Task.Task5@13d6d53]" name="setUP" is-config="true" duration-ms="12637" started-at="2013-03-01T11:30:12Z" finished-at="2013-03-01T11:30:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="verifySignIn()[pri:0, instance:Team.Task.Task1@13d6d53]" name="verifySignIn" duration-ms="6506" started-at="2013-02-27T20:42:40Z" finished-at="2013-02-27T20:42:46Z">
+        </test-method> <!-- setUP -->
+        <test-method status="PASS" signature="verifySignIn()[pri:0, instance:Team.Task.Task5@13d6d53]" name="verifySignIn" duration-ms="2932" started-at="2013-03-01T11:30:24Z" finished-at="2013-03-01T11:30:27Z">
           <reporter-output>
+            <line>
+              <![CDATA[Rozetka.com.ua has 60new cetegories]]>
+            </line>
           </reporter-output>
         </test-method> <!-- verifySignIn -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:Team.Task.Task1@13d6d53]" name="afterTest" is-config="true" duration-ms="1" started-at="2013-02-27T20:42:46Z" finished-at="2013-02-27T20:42:46Z">
+        <test-method status="PASS" signature="turnDown()[pri:0, instance:Team.Task.Task5@13d6d53]" name="turnDown" is-config="true" duration-ms="140" started-at="2013-03-01T11:30:27Z" finished-at="2013-03-01T11:30:27Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterTest -->
-      </class> <!-- Team.Task.Task1 -->
+        </test-method> <!-- turnDown -->
+      </class> <!-- Team.Task.Task5 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
