@@ -11,6 +11,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+<<<<<<< HEAD
+=======
+import org.testng.Reporter;
+>>>>>>> cf263f76ec908a6b73a085e9a30f6a2c220954c4
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
