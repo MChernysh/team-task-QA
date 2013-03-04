@@ -11,7 +11,7 @@
   <url>http://maven.apache.org</url>
 
    <properties>
-        <seleniumVersion>2.22.0</seleniumVersion>
+        <seleniumVersion>2.30.0</seleniumVersion>
         <junit.version>4.8.2</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

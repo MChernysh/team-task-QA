@@ -19,17 +19,22 @@ import org.testng.annotations.Test;
 
 public class Task8 {
 	private FirefoxDriver driver = new FirefoxDriver();
+	private String login = "testatqc@gmail.com";
+	private String password = "IF-025.ATQC";
+	
 	HomePage home = new HomePage(driver);
 	
-	@BeforeClass
-	public void setUp(){
 	
-	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	driver.get("http://rozetka.com.ua");
-	home.SignIN("testatqc@gmail.com", "IF-025.ATQC");
-	home.clickElement(".//a[@name=\"close\"]");//logging into the system using class 'HomePage'
-	System.out.println("User Logged");
-}
+	@BeforeClass
+	public void Loggin(){
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://rozetka.com.ua");
+		home.SignIN(login, password);
+		home.clickElement(By.xpath(".//a[@name=\"close\"]"));	
+    	System.out.println("User Logged");
+	
+	}
 
     @AfterClass
 	public void tearDown(){
@@ -38,6 +43,7 @@ public class Task8 {
 }
     @Test
     public void testGoToPersonalAccount(){
+    	
     	isElementPresent(By.xpath(".//*[@id='user_menu']/ul/li[2]/a"));
     	driver.findElement(By.xpath(".//*[@id='user_menu']/ul/li[2]/a")).click();//open personal account
     	System.out.println("Personal account is open");
@@ -47,8 +53,19 @@ public class Task8 {
     	driver.findElement(By.linkText("Списки желаний")).click();
     	//	driver.get("http://my.rozetka.com.ua/profile/wishlists/");
     	System.out.println("Wishlist opened");
+    }
+    	
+    public void testWishList(){
     	isElementPresent(By.xpath(".//*[@id='481167-1840614']/a"));
     	driver.findElement(By.xpath(".//*[@id='481167-1840614']/a")).click();//remove first product from the first Wishlist
+    	File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);	
+		try {
+			FileUtils.copyFile(file, new File("test-output/Task_8 - Screenshot.png"));
+		} 
+		catch (IOException e) 
+		{ 
+			e.printStackTrace(); 
+		} 
     	isElementPresent(By.xpath("html/body/div[1]/div/div/div[2]/form/div[1]/ul/li[4]/label/input"));
     	driver.findElement(By.xpath("html/body/div[1]/div/div/div[2]/form/div[1]/ul/li[4]/label/input")).click();//goods are moving into the second Wishlist
     	isElementPresent(By.xpath(".//*[@id='user_menu']/ul/li[2]/a"));
@@ -66,14 +83,6 @@ public class Task8 {
 		  if (act.isEmpty()){
 			System.out.println("Element was not found"+by.toString()); 
 		  }
+		 
     }
-		  public void makeScreenshot()		{
-				File screenFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);	
-				try		{
-				FileUtils.copyFile(screenFile, new File("Test8.png"));//method to make screenshot
-				}		catch (IOException e) {
-					e.printStackTrace();
-				}
-    	}
-    }
-
+}
