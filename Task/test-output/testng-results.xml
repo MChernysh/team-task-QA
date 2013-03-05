@@ -2,12 +2,12 @@
 <testng-results skipped="1" failed="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="187" started-at="2013-03-04T14:09:06Z" finished-at="2013-03-04T14:09:06Z">
+  <suite name="Default suite" duration-ms="84" started-at="2013-03-05T08:30:01Z" finished-at="2013-03-05T08:30:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="187" started-at="2013-03-04T14:09:06Z" finished-at="2013-03-04T14:09:06Z">
+    <test name="Default test" duration-ms="84" started-at="2013-03-05T08:30:01Z" finished-at="2013-03-05T08:30:01Z">
       <class name="Team.Task.Task8">
-        <test-method status="FAIL" signature="setUp()[pri:0, instance:Team.Task.Task8@180ec46]" name="setUp" is-config="true" duration-ms="0" started-at="2013-03-04T16:09:06Z" finished-at="2013-03-04T16:09:06Z">
+        <test-method status="FAIL" signature="setUp()[pri:0, instance:Team.Task.Task8@8969c3]" name="setUp" is-config="true" duration-ms="0" started-at="2013-03-05T10:30:01Z" finished-at="2013-03-05T10:30:01Z">
           <exception class="java.lang.Error">
             <message>
               <![CDATA[Unresolved compilation problem: 
@@ -49,11 +49,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="SKIP" signature="testGoToPersonalAccount()[pri:0, instance:Team.Task.Task8@180ec46]" name="testGoToPersonalAccount" duration-ms="29" started-at="2013-03-04T16:09:06Z" finished-at="2013-03-04T16:09:06Z">
+        <test-method status="SKIP" signature="testGoToPersonalAccount()[pri:0, instance:Team.Task.Task8@8969c3]" name="testGoToPersonalAccount" duration-ms="5" started-at="2013-03-05T10:30:01Z" finished-at="2013-03-05T10:30:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGoToPersonalAccount -->
-        <test-method status="SKIP" signature="tearDown()[pri:0, instance:Team.Task.Task8@180ec46]" name="tearDown" is-config="true" duration-ms="0" started-at="2013-03-04T16:09:06Z" finished-at="2013-03-04T16:09:06Z">
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:Team.Task.Task8@8969c3]" name="tearDown" is-config="true" duration-ms="0" started-at="2013-03-05T10:30:01Z" finished-at="2013-03-05T10:30:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

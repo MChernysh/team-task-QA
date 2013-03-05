@@ -1,6 +1,9 @@
 package Team.Task;
 
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -13,22 +16,19 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 
 public class Task8 {
 	private FirefoxDriver driver = new FirefoxDriver();
 	private String login = "testatqc@gmail.com";
 	private String password = "IF-025.ATQC";
-	
 	HomePage home = new HomePage(driver);
 	
 	
 	@BeforeClass
 	public void Loggin(){
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.get("http://rozetka.com.ua");
 		home.SignIN(login, password);
 		home.clickElement(By.xpath(".//a[@name=\"close\"]"));	
@@ -36,28 +36,33 @@ public class Task8 {
 	
 	}
 
-    @AfterClass
+    
+	@AfterClass
 	public void tearDown(){
 	
 	driver.close();//closing the Web browser
 }
     @Test
-    public void testGoToPersonalAccount(){
+    public void testTask8(){
     	
     	isElementPresent(By.xpath(".//*[@id='user_menu']/ul/li[2]/a"));
     	driver.findElement(By.xpath(".//*[@id='user_menu']/ul/li[2]/a")).click();//open personal account
     	System.out.println("Personal account is open");
-    }
-    
-    public void testGoToWishList(){
     	driver.findElement(By.linkText("Списки желаний")).click();
-    	//	driver.get("http://my.rozetka.com.ua/profile/wishlists/");
-    	System.out.println("Wishlist opened");
-    }
-    	
-    public void testWishList(){
-    	isElementPresent(By.xpath(".//*[@id='481167-1840614']/a"));
-    	driver.findElement(By.xpath(".//*[@id='481167-1840614']/a")).click();//remove first product from the first Wishlist
+    	String alt1 = driver.findElement(By.linkText("Переместить")).getAttribute("alt");
+    	String title1 = driver.findElement(By.linkText("Переместить")).getAttribute("title");
+    	driver.findElement(By.linkText("Переместить")).click();
+        driver.findElement(By.name("data[wishlist_id]")).click();
+        driver.findElement(By.cssSelector("button.button-css-green")).click();
+        driver.findElement(By.cssSelector("div.message.code1")).click();
+        
+        String alt2 = driver.findElement(By.xpath(".//*[@id='486104-1864241']/a")).getAttribute("alt");
+    	String title2 = driver.findElement(By.xpath(".//*[@id='486104-1864241']/a")).getAttribute("title");
+    	compare(alt1, alt2);
+    	compare(title1, title2);
+        //verifyTextPresent may require manual changes
+        isElementPresent(By.cssSelector("div.message.code1"));
+        driver.findElement(By.cssSelector("BODY")).getText();    
     	File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);	
 		try {
 			FileUtils.copyFile(file, new File("test-output/Task_8 - Screenshot.png"));
@@ -66,23 +71,24 @@ public class Task8 {
 		{ 
 			e.printStackTrace(); 
 		} 
-    	isElementPresent(By.xpath("html/body/div[1]/div/div/div[2]/form/div[1]/ul/li[4]/label/input"));
-    	driver.findElement(By.xpath("html/body/div[1]/div/div/div[2]/form/div[1]/ul/li[4]/label/input")).click();//goods are moving into the second Wishlist
-    	isElementPresent(By.xpath(".//*[@id='user_menu']/ul/li[2]/a"));
-    	driver.findElement(By.xpath(".//*[@id='user_menu']/ul/li[2]/a")).click();
-    	isElementPresent(By.xpath("html/body/div[1]/div/div/div[2]/form/div[2]/button"));
-    	driver.findElement(By.xpath("html/body/div[1]/div/div/div[2]/form/div[2]/button")).click();//remove goods from one wishlist to another
     	System.out.println("Goods moved to another wishlist");
-    	isElementPresent(By.cssSelector("html/body/div[1]/div[2]/div[1]/div/div[2]/div/div[3]/div[3]/div[2]/div/div/div[2]/div[1]/table/tbody/tr/td/a/img"));
-    	isElementPresent(By.xpath("html/body/div[1]/div[2]/div[1]/div/div[2]/div/div[3]/div[3]/div[2]/div/div/div[2]/div[2]/a"));//check the presence of the goods in this wishlist
-    	System.out.println("Commodity present in  Wishlist2");
-    	isElementPresent(By.cssSelector("html/body/div[1]/div[2]/div[1]/div/div[2]/div/div[2]/div"));//test for the presence of label 'goods moved'
     }
-    private void isElementPresent(By by) {
+    private void compare(String frststr, String scndstr) {
+		try {
+			Assert.assertEquals(frststr, scndstr);
+		} 
+		catch (AssertionError e) {
+			System.out.println("Strings \n" + "'" + frststr + "'" + "\n and \n" + "'" + scndstr + "'" + "\n are not equal!");
+			//Reporter.log("Strings <br>" + "'" + frststr + "'" + "<br> and <br>" + "'" + scndstr + "'" + "<br> are not equal!<br>");
+		}
+	}
+
+	private void isElementPresent(By by) {
 	List <WebElement> act = driver.findElements(by);//method search element on page
 		  if (act.isEmpty()){
 			System.out.println("Element was not found"+by.toString()); 
 		  }
-		 
     }
 }
+
+
