@@ -21,6 +21,15 @@ public class Task7{
 	
 	HomePage home = new HomePage(driver);
 	
+	public boolean isElementIn(By by) {
+		
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		boolean present = driver.findElements(by).size() != 0;
+		driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+		
+		return present;
+	}
+	
 	@BeforeClass
 	public void setUp(){
 		
@@ -34,7 +43,9 @@ public class Task7{
 		// go to wish list page, check whether there are some and delete them
 		home.clickElement(By.xpath(".//a[@name=\"profile\"]"));
 		home.clickElement(By.xpath("//div[@class=\"title\"]/a[contains(text(), \"Списки желаний\")]"));
-		home.deleteWishLists(By.xpath("//div[@class=\"cell wishlist-i-delete\"]/a[@class=\"xhr sprite\"]"));
+		
+		if(isElementIn(By.xpath("//div[@class=\"cell wishlist-i-delete\"]/a[@name=\"wishlist-delete\"]")))
+			home.deleteWishLists(By.xpath("//div[@class=\"cell wishlist-i-delete\"]/a[@name=\"wishlist-delete\"]"));	
 	}
 	
 	@AfterClass

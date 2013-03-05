@@ -71,14 +71,12 @@ public class HomePage {
 	
 	public void deleteWishLists(By by){
 			
-		if (!driver.findElements(by).isEmpty()){
-			
-			int count = driver.findElements(by).size();
+		int count = driver.findElements(by).size();
 		
-			for(int j = 0; j < count; j++) 
-				driver.findElement(by).click();
-		}
+		for(int j = 0; j < count; j++) 
+			driver.findElement(by).click();
 	}
 }
+
 
 
