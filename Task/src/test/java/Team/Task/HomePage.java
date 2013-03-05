@@ -1,4 +1,4 @@
-package Team.Task;
+﻿package Team.Task;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -33,6 +33,10 @@ public class HomePage {
 		return count;
 
 
+	}
+	public int countNewCategoty1(){
+		int count1 = driver.findElements(By.xpath("//div[@class='title']/a")).size();
+		return count1;
 	}
 
 	public void signOut(){
