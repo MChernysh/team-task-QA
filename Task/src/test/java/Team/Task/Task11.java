@@ -11,10 +11,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-<<<<<<< HEAD
-=======
-import org.testng.Reporter;
->>>>>>> cf263f76ec908a6b73a085e9a30f6a2c220954c4
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -76,11 +72,11 @@ public class Task11 {
 		
 		//Check the popup and show its contents 
 		String popup = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/p")).getText();
-		System.out.println("Popup window contains such information: " + "\n" + "'" + popup + "'");		
+		//System.out.println("Popup window contains such information: " + "\n" + "'" + popup + "'");		
 		
 		//Check the hyperlink in popup and show its content
 		String detalnishe = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getText();
-		System.out.println("Hyperlink " + "'" + detalnishe + "'" + " exists!");
+		System.out.println("Hyperlink exists!");
 		
 		
 		//Make screenshot
