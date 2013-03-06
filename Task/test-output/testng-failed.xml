@@ -5,8 +5,9 @@
     <classes>
       <class name="Team.Task.Task8">
         <methods>
-          <include name="setUp"/>
-          <include name="testGoToPersonalAccount"/>
+          <include name="tearDown"/>
+          <include name="Loggin"/>
+          <include name="testTask8"/>
         </methods>
       </class> <!-- Team.Task.Task8 -->
     </classes>

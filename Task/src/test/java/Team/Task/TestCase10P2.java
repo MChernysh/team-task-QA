@@ -16,6 +16,7 @@ public class TestCase10P2 {
 	private String codeGeneralPage;
 	private String priceReferencePage;
 	private String codeReferencePage;
+	private String starFinall;
 	
 	
 	public TestCase10P2(FirefoxDriver driver) {	
@@ -38,18 +39,20 @@ public class TestCase10P2 {
 			//chose needed finding condition at the page 
 	public void makeSortCondition() {
 			//phone item is chosen
-		driver.findElementByXPath(".//*[@id='phones-mp3-gps']/a/span").click();
-		
-			//left item mobile phone is chosen
-		driver.findElementByXPath
-		(".//*[@id='head_banner_container']/div[2]/div/div/div[2]/div/div/div/div/div[3]/ul/li[1]/ul/li[1]/a").click();
+//		driver.findElementByXPath(".//*[@id='phones-mp3-gps']/a/span").click();
+//		
+//			//left item mobile phone is chosen
+//		driver.findElementByXPath
+//		(".//*[@id='head_banner_container']/div[2]/div/div/div[2]/div/div/div/div/div[3]/ul/li[1]/ul/li[1]/a").click();
+			//chose mobile phone item
+		driver.findElementByXPath(".//*[@href='http://rozetka.com.ua/ru/products/procategory/92/index.html']").click();
 		
 			//price from 1600 to 2799 item is chosen
 		driver.findElementByXPath
        		 (".//*[@id='head_banner_container']/div[3]/div/div/div[2]/div/div/div/div/div[3]/ul/li[4]/ul/li[4]/a").click();
 		
 			//phone name HTC is marked
-		driver.findElementByXPath(".//*[@id='sort_producer']/li[8]/label").click();
+		driver.findElementByXPath(".//*[@href='http://rozetka.com.ua/mobile-phones/c80003/filter/price=1600-2799;producer=htc/']").click();
 		
 			//take phone price from general page
 		priceGeneralPage = driver.findElementByXPath
@@ -81,22 +84,18 @@ public class TestCase10P2 {
 			return false;
 	}
 	
-			//method that check number of phone star
-	public int starsNumber()	{
-		int starNumber = 0;		
-        for (int sWidth=1; sWidth<=5; sWidth=sWidth+1)		{
-       	 int rightStarWidth = sWidth*20;
-       	 String starWidth = ".//*[@style='width: " +(rightStarWidth)+ "%;']";
-        try 	{
-        if (driver.findElementByXPath(starWidth).isDisplayed())	
-        	starNumber = (rightStarWidth/20); 
-        }
-        catch (NoSuchElementException e) {
-       	 starNumber = starNumber;
-			}
-        }
-		return starNumber;
-	}
+	//method that check number of phone star
+		public int starsNumber()	{
+
+			String star = driver.findElementByXPath(".//*[@typeof='v:Rating']").getAttribute("style");
+			
+				starFinall = star.replaceAll("\\D", ""); 
+				
+			int starPersent = Integer.parseInt(starFinall);
+			int starNumber = starPersent/20;
+			return starNumber;	
+		}
+
 	
 			//save phone in wish list
 	public void saveWishList()		{
