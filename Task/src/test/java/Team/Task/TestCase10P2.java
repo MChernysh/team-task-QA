@@ -13,10 +13,13 @@ public class TestCase10P2 {
 
 	private FirefoxDriver driver;
 	private String priceGeneralPage;
-	private String codeGeneralPage;
-	private String priceReferencePage;
+	private String codeGeneralPage;						
+	private String priceReferencePage;			
 	private String codeReferencePage;
 	private String starFinall;
+	
+	
+	
 	
 	
 	public TestCase10P2(FirefoxDriver driver) {	
@@ -39,22 +42,17 @@ public class TestCase10P2 {
 			//chose needed finding condition at the page 
 	public void makeSortCondition() {
 			//phone item is chosen
-//		driver.findElementByXPath(".//*[@id='phones-mp3-gps']/a/span").click();
-//		
-//			//left item mobile phone is chosen
-//		driver.findElementByXPath
-//		(".//*[@id='head_banner_container']/div[2]/div/div/div[2]/div/div/div/div/div[3]/ul/li[1]/ul/li[1]/a").click();
-			//chose mobile phone item
 		driver.findElementByXPath(".//*[@href='http://rozetka.com.ua/ru/products/procategory/92/index.html']").click();
 		
 			//price from 1600 to 2799 item is chosen
-		driver.findElementByXPath
-       		 (".//*[@id='head_banner_container']/div[3]/div/div/div[2]/div/div/div/div/div[3]/ul/li[4]/ul/li[4]/a").click();
+		driver.findElementByLinkText("1 600 грн. — 2 799 грн.").click();
+//		driver.findElementByXPath
+//       		 (".//*[@id='head_banner_container']/div[3]/div/div/div[2]/div/div/div/div/div[3]/ul/li[4]/ul/li[4]/a").click();
 		
 			//phone name HTC is marked
 		driver.findElementByXPath(".//*[@href='http://rozetka.com.ua/mobile-phones/c80003/filter/price=1600-2799;producer=htc/']").click();
 		
-			//take phone price from general page
+			//take phone price from general page		
 		priceGeneralPage = driver.findElementByXPath
 				(".//*[@id='head_banner_container']/div[2]/div/div/div[2]/div/div[4]/table[3]/tbody/tr/td[2]/table[1]/tbody/tr/td[1]/div[2]/div[2]").getText();
 		
@@ -69,6 +67,8 @@ public class TestCase10P2 {
 		
 			//take phone price from reference page
 		priceReferencePage = driver.findElementByXPath(".//*[@class='pp-usd']").getText();
+		
+		System.out.println(priceReferencePage);
 		
 			//take phone code from reference page
 		codeReferencePage = driver.findElementByXPath(".//*[@class='pp-code']").getText();
