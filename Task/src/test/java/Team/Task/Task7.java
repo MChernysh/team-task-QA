@@ -1,21 +1,22 @@
 package Team.Task;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.Assert;
+import org.testng.AssertJUnit;
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import org.apache.commons.io.FileUtils;
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 public class Task7{
 
 	private FirefoxDriver driver = new FirefoxDriver();
-	private String searchTerm = "samsung";
 	private String login = "testatqc@gmail.com";
 	private String password = "IF-025.ATQC";
 	
@@ -25,7 +26,7 @@ public class Task7{
 		
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		boolean present = driver.findElements(by).size() != 0;
-		driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		return present;
 	}
@@ -51,11 +52,51 @@ public class Task7{
 	@AfterClass
 	public void tearDown(){
 		
+		home.deleteWishLists(By.xpath("//div[@class=\"cell wishlist-i-delete\"]/a[@name=\"wishlist-delete\"]"));
 		driver.close();
 	}
 	
-	@Test(groups = { "Taras" })
-	public void Task7_Test(){
+	public String[][] getTableArray(String xlFilePath, String sheetName, String tableName) throws Exception{
+        	
+		String[][] tabArray = null;
+        
+        Workbook workbook = Workbook.getWorkbook(new File(xlFilePath));
+        Sheet sheet = workbook.getSheet(sheetName); 
+        int startRow,startCol, endRow, endCol,ci, cj;
+       
+        Cell tableStart = sheet.findCell(tableName);
+        
+        startRow = tableStart.getRow();
+        startCol = tableStart.getColumn();
+
+        Cell tableEnd = sheet.findCell(tableName, startCol+1,startRow+1, 100, 64000,  false);                
+
+        endRow = tableEnd.getRow();
+        endCol = tableEnd.getColumn();
+        
+            
+        tabArray = new String[endRow-startRow-1][endCol-startCol-1];
+        
+        ci = 0;
+
+            for (int i = startRow + 1; i < endRow; i++, ci++){
+                cj = 0;
+                for (int j = startCol + 1; j < endCol; j++, cj++){
+                    tabArray[ci][cj] = sheet.getCell(j,i).getContents();
+                }
+            }
+        
+        return(tabArray);
+    }
+
+	@DataProvider(name = "data")
+    public Object[][] createData1() throws Exception{
+        Object[][] retObjArr=getTableArray("\\src\\test\\data\\data.xls", "Data", "test7Data");
+        return(retObjArr);
+    }
+	
+	@Test (dataProvider = "data")
+	public void Test(String searchTerm){
 		
 		// clear the text box and search for the searchTerm
 		home.clearTextBox(By.xpath(".//div//input[@class=\"text\"]"));
@@ -63,36 +104,32 @@ public class Task7{
 		
 		// click "Submit" button and verify whether search results contain the searchTerm
 		ResultPage result = home.clickElement(By.xpath(".//button[@type=\"submit\"]")); 				
-		Assert.assertTrue(searchTerm.equals(result.getElementText(By.xpath(".//h1/span")))); 	 
+		AssertJUnit.assertTrue(searchTerm.equals(result.getElementText(By.xpath(".//h1/span")))); 	 
 
 		// get the element's color and verify it
 		String color = driver.findElement(By.xpath(".//h1/span")).getCssValue("color");	
-		Assert.assertTrue(color.equals("rgba(50, 154, 28, 1)"));						
+		AssertJUnit.assertTrue(color.equals("rgba(50, 154, 28, 1)"));						
 			
 		// get 3..5 search results and store them to the wish list
 		for(int i = 3; i <= 5; i++) {														
 																							 
-			result.clickElement(By.xpath(".//table["+i+"]//a[@name=\"towishlist\"]")); 				
-			result.clearTextBox(By.xpath(".//input[@name=\"wishlist_title\"]"));
-			result.sendText(By.xpath(".//input[@name=\"wishlist_title\"]"), "Список желаний "+ (i-2));
-			result.clickElement(By.xpath(".//div[@class=\"submit\"]/button[@type=\"submit\"]"));
-	
-		  if(i < 5) 
-			result.clickElement(By.xpath(".//a[@name=\"close\"]"));
+			if(isElementIn(By.xpath(".//table[" + i + "]//a[@name=\"towishlist\"]"))){
+				
+				result.clickElement(By.xpath(".//table[" + i + "]//a[@name=\"towishlist\"]")); 				
+				result.clearTextBox(By.xpath(".//input[@name=\"wishlist_title\"]"));
+				result.sendText(By.xpath(".//input[@name=\"wishlist_title\"]"), "Список желаний " + (i-2));
+				result.clickElement(By.xpath(".//div[@class=\"submit\"]/button[@type=\"submit\"]"));	
+			
+			if(i < 5) 
+				result.clickElement(By.xpath(".//a[@name=\"close\"]"));
+			}
 		}
 		
 		// visit the wish list page from the pop up
 		result.clickElement(By.xpath(".//div[@class=\"comment\"]/a[@class=\"underline\"]"));			
 
-		//make a screenshot and save it to the project's directory
-		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);	
-		try {
-			FileUtils.copyFile(file, new File("test-output/Task_7 - Screenshot.png"));
-		} 
-		catch (IOException e) 
-		{ 
-			e.printStackTrace(); 
-		} 
+		// make a screenshot and save it to the project's directory
+		result.makeScreenshot("test-output/Task_7 - Screenshot.png");
 	}	
 }
 

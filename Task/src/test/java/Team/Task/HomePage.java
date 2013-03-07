@@ -109,21 +109,21 @@ public int countNewCategoty1(){
 		
 		isElementPresent(by);
 		driver.findElement(by).click();
+		
 		return new ResultPage(driver);
-		}
+	}
+	
 	public void sendText(By by, String text) {
 		
 		isElementPresent(by);
 		driver.findElement(by).sendKeys(text);
 	}
 
-
-
 	public void clearTextBox(By by){
 
 		isElementPresent(by);
-		driver.findElement(by).clear();}
-	
+		driver.findElement(by).clear();
+	}
 	
 	
 	public void deleteWishLists(By by){
@@ -132,12 +132,7 @@ public int countNewCategoty1(){
 		
 		for(int j = 0; j < count; j++) 
 			driver.findElement(by).click();
-	
-	
-	
-
-
-}
+	}
 }
 
 
