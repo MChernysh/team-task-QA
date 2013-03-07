@@ -31,9 +31,8 @@ public class Task7{
 	
 	HomePage home = new HomePage(driver);
 	
-	public static List<String> getExcelData(String filename, int colNum){
+	public static List<String> getExcelData(String filename, int colNum, int sheetNum){
 		
-		int sheetNum = 0; // worksheet number
 		List<String> values = new ArrayList<String>();
 		
 		try {
@@ -106,7 +105,7 @@ public class Task7{
 	@DataProvider(name = "data")
 	public static Object[][] init() {
 		
-		List<String> list = getExcelData("src/test/data/test.xls",0);
+		List<String> list = getExcelData("src/test/data/test.xls", 0 , 0);
 		
 		// remove first cell entry - "Test7", "Test1" ... etc
 		list.remove(0);	
