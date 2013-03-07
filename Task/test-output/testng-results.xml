@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
+    <line>
+      <![CDATA[Rozetka.com.ua has 60 new cetegories]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="62952" started-at="2013-03-06T15:35:10Z" finished-at="2013-03-06T15:36:13Z">
+  <suite name="Suite" duration-ms="75690" started-at="2013-03-06T22:02:29Z" finished-at="2013-03-06T22:03:44Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="62952" started-at="2013-03-06T15:35:10Z" finished-at="2013-03-06T15:36:13Z">
+    <test name="Test3" duration-ms="5233" started-at="2013-03-06T22:02:29Z" finished-at="2013-03-06T22:02:34Z">
+      <class name="Team.Task.Task3">
+        <test-method status="PASS" signature="task3_Test()[pri:0, instance:Team.Task.Task3@67eae247]" name="task3_Test" duration-ms="5207" started-at="2013-03-07T00:02:29Z" finished-at="2013-03-07T00:02:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- task3_Test -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Team.Task.Task3@67eae247]" name="tearDown" is-config="true" duration-ms="14" started-at="2013-03-07T00:02:34Z" finished-at="2013-03-07T00:02:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Team.Task.Task3 -->
+    </test> <!-- Test3 -->
+    <test name="Test5" duration-ms="12064" started-at="2013-03-06T22:02:34Z" finished-at="2013-03-06T22:02:46Z">
+      <class name="Team.Task.Task5">
+        <test-method status="PASS" signature="setUP()[pri:0, instance:Team.Task.Task5@a8b228a]" name="setUP" is-config="true" duration-ms="8335" started-at="2013-03-07T00:02:34Z" finished-at="2013-03-07T00:02:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUP -->
+        <test-method status="PASS" signature="contNewCategories()[pri:0, instance:Team.Task.Task5@a8b228a]" name="contNewCategories" duration-ms="3488" started-at="2013-03-07T00:02:42Z" finished-at="2013-03-07T00:02:46Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Rozetka.com.ua has 60 new cetegories]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- contNewCategories -->
+        <test-method status="PASS" signature="turnDown()[pri:0, instance:Team.Task.Task5@a8b228a]" name="turnDown" is-config="true" duration-ms="239" started-at="2013-03-07T00:02:46Z" finished-at="2013-03-07T00:02:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- turnDown -->
+      </class> <!-- Team.Task.Task5 -->
+    </test> <!-- Test5 -->
+    <test name="Test10" duration-ms="40444" started-at="2013-03-06T22:02:46Z" finished-at="2013-03-06T22:03:26Z">
       <class name="Team.Task.TestCase10">
-        <test-method status="PASS" signature="StartUp()[pri:0, instance:Team.Task.TestCase10@b1f3c4e]" name="StartUp" is-config="true" duration-ms="21758" started-at="2013-03-06T17:35:10Z" finished-at="2013-03-06T17:35:32Z">
+        <test-method status="PASS" signature="StartUp()[pri:0, instance:Team.Task.TestCase10@4d447e6b]" name="StartUp" is-config="true" duration-ms="7137" started-at="2013-03-07T00:02:46Z" finished-at="2013-03-07T00:02:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- StartUp -->
-        <test-method status="PASS" signature="testCase10()[pri:0, instance:Team.Task.TestCase10@b1f3c4e]" name="testCase10" duration-ms="40524" started-at="2013-03-06T17:35:32Z" finished-at="2013-03-06T17:36:13Z">
+        <test-method status="PASS" signature="testCase10()[pri:0, instance:Team.Task.TestCase10@4d447e6b]" name="testCase10" duration-ms="33014" started-at="2013-03-07T00:02:53Z" finished-at="2013-03-07T00:03:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCase10 -->
-        <test-method status="PASS" signature="ShutDown()[pri:0, instance:Team.Task.TestCase10@b1f3c4e]" name="ShutDown" is-config="true" duration-ms="646" started-at="2013-03-06T17:36:13Z" finished-at="2013-03-06T17:36:13Z">
+        <test-method status="PASS" signature="ShutDown()[pri:0, instance:Team.Task.TestCase10@4d447e6b]" name="ShutDown" is-config="true" duration-ms="292" started-at="2013-03-07T00:03:26Z" finished-at="2013-03-07T00:03:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShutDown -->
       </class> <!-- Team.Task.TestCase10 -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test10 -->
+    <test name="Test11" duration-ms="17912" started-at="2013-03-06T22:03:27Z" finished-at="2013-03-06T22:03:44Z">
+      <class name="Team.Task.Task11">
+        <test-method status="PASS" signature="settingUp()[pri:0, instance:Team.Task.Task11@5aa5c1f]" name="settingUp" is-config="true" duration-ms="4908" started-at="2013-03-07T00:03:27Z" finished-at="2013-03-07T00:03:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- settingUp -->
+        <test-method status="PASS" signature="task11()[pri:0, instance:Team.Task.Task11@5aa5c1f]" name="task11" duration-ms="12666" started-at="2013-03-07T00:03:31Z" finished-at="2013-03-07T00:03:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- task11 -->
+        <test-method status="PASS" signature="turnDown()[pri:0, instance:Team.Task.Task11@5aa5c1f]" name="turnDown" is-config="true" duration-ms="336" started-at="2013-03-07T00:03:44Z" finished-at="2013-03-07T00:03:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- turnDown -->
+      </class> <!-- Team.Task.Task11 -->
+    </test> <!-- Test11 -->
+  </suite> <!-- Suite -->
 </testng-results>

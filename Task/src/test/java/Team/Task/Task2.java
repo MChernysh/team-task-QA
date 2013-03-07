@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-@Test
+@Test(groups = { "Ljuda" })
 public class Task2 {
 	private FirefoxDriver driver = new FirefoxDriver();
 	private String login = "testatqc@gmail.com";

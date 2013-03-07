@@ -1,8 +1,9 @@
 package Team.Task;
 
 import java.util.concurrent.TimeUnit;
-import java.lang.System;
+import java.io.IOException;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -14,14 +15,21 @@ public class Task1 {
 	private String login = "testatqc@gmail.com";
 	private String password = "IF-025.ATQC";
 	private WebDriver driver;
-	@Test
-	public void verifySignIn() {
+	@Test(groups = { "Roma" })
+	public void verifySignIn() throws IOException {
 
 		HomePage homePage = new HomePage(driver);
 		homePage.SignIN(login, password);
-		PersonalPage personalPage = homePage.goToPersonalPage();
-		personalPage.goToWishList();
-		//personalPage.signOut();
+		homePage.goToPersonalPage();
+		homePage.goToWishList();
+		if(homePage.checkWishList()){
+			homePage.serch("HTC");
+			homePage.addtoWishList(1, "WishListFor_1_Test");
+			homePage.goToPersonalPage();
+			homePage.goToWishList();
+			if(homePage.checkWishList())Reporter.log("Some problem with Wich Lists");
+		}
+		homePage.signOut();
 
 	}
 
@@ -36,6 +44,7 @@ public class Task1 {
 
 	@AfterTest
 	public void turnDown() {
+		driver.quit();
 	}
 
 }

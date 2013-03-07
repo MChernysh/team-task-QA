@@ -1,5 +1,6 @@
 package Team.Task;
 
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class Task3 {
 	float f2;
 	
 
-	@Test
+	@Test(groups = { "Denys" })
 	public void task3_Test() {
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -96,7 +97,7 @@ public class Task3 {
 				}		                	        
 	}	 
 	 
-	
+	@AfterTest
 		 public void tearDown(){
 		
 		 driver.close();

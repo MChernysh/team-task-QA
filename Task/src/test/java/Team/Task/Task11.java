@@ -34,7 +34,7 @@ public class Task11 {
 	}
 
 		
-	@Test
+	@Test(groups = { "Dima" })
 	public void task11() {
 		//Select "Computers" from main menu
 		driver.findElement(By.xpath(".//*[@id='computers-notebooks']")).click();
@@ -71,11 +71,11 @@ public class Task11 {
 		String href = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getAttribute("href");
 		
 		//Check the popup and show its contents 
-		String popup = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/p")).getText();
+		driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/p")).getText();
 		//System.out.println("Popup window contains such information: " + "\n" + "'" + popup + "'");		
 		
 		//Check the hyperlink in popup and show its content
-		String detalnishe = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getText();
+		driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getText();
 		System.out.println("Hyperlink exists!");
 		
 		

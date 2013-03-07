@@ -2,48 +2,43 @@ package Team.Task;
 
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-
-import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.AssertJUnit;
-import org.testng.Reporter;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Task12 {
 	private String login = "testatqc@gmail.com";
 	private String password = "IF-025.ATQC";
-	private WebDriver driver;
 	private String search = "IPAD 16GB";
-
+	private FirefoxDriver driver = new FirefoxDriver();
+    HomePage home = new HomePage(driver);
+	
 	
 	@BeforeClass
 	public void setUp(){
-	driver = new FirefoxDriver();
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     driver.get("http://rozetka.com.ua");
+	home.SignIN(login, password);
+	home.clickElement(By.xpath(".//a[@name=\"close\"]"));	
+
 	}	
 
-@Test	
+@Test(groups = { "Orest" })	
 public void LoginAc(){
-	HomePage home = new HomePage(driver);
-	home.SignIN(login, password);
-	home.sendText(By.xpath("//div[@class='search-field']/input"),search);
-	ResultPage result= home.clickElement(By.xpath(".//button[@type=\"submit\"]"));
+home.sendText(By.xpath("//div[@class='search-field']/input"),search);
+ResultPage result= home.clickElement(By.xpath(".//button[@type=\"submit\"]"));
 int count=home.countNewCategoty1();
 //System.out.println(count);
 //checking if 16GB is displayed in capture and technical 
 for (int i = 1;i<count;i++){	
 String org= driver.findElement(By.xpath(".//*[@id='head_banner_container']/div[2]/div/div[1]/div/div/div[3]/table["+i+"]/tbody/tr/td[2]/div/a")).getText();
 //System.out.println(org);
-AssertJUnit.assertTrue(org.contains(("16GB"))); 
+Assert.assertTrue(org.contains(("16GB"))); 
 String org1=driver.findElement(By.xpath(".//*[@id='head_banner_container']/div[2]/div/div[1]/div/div/div[3]/table["+i+"]/tbody/tr/td[2]/p")).getText();
-AssertJUnit.assertTrue(org1.contains("16 ГБ")); 
+Assert.assertTrue(org1.contains("16 ГБ")); 
 }
 
 //picking the product with max comments

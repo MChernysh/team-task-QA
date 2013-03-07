@@ -17,7 +17,7 @@ public class Task5 {
 	private String password = "IF-025.ATQC";
 	private WebDriver driver;
 	
-	@Test
+	@Test(groups = { "Roma" })
 	public void contNewCategories() {
 
 		HomePage homePage = new HomePage(driver);

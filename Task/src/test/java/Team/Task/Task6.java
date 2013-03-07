@@ -13,7 +13,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.AssertJUnit;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -24,15 +24,15 @@ public class Task6 {
 	private WebDriver driver;
 
 
-@Test
+@Test(groups = { "Orest" })
 public void LoginAc(){
 Log log=new Log(driver);
 log.Login(login, password);
 driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
 String color = driver.findElement(By.xpath(".//*[@id='head_banner']/a")).getCssValue("background-color");
-AssertJUnit.assertTrue(color.equals("rgba(50, 154, 28, 1)"));
+Assert.assertTrue(color.equals("rgba(117, 0, 51, 1)"));
 String toolbarcolor = driver.findElement(By.className("hdr-tools")).getCssValue("background-color");
-AssertJUnit.assertTrue(toolbarcolor.equals("rgba(17, 73, 137, 1)"));
+Assert.assertTrue(toolbarcolor.equals("rgba(17, 73, 137, 1)"));
 log.LogOut();
 }
 	@BeforeTest
