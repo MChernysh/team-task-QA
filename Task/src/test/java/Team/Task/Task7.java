@@ -91,7 +91,7 @@ public class Task7{
 
 	@DataProvider(name = "data")
     public Object[][] createData1() throws Exception{
-        Object[][] retObjArr=getTableArray("\\src\\test\\data\\test.xls", "Data", "test7Data");
+        Object[][] retObjArr=getTableArray(".\\src\\test\\data\\test.xls", "Data", "test7Data");
         return(retObjArr);
     }
 	
