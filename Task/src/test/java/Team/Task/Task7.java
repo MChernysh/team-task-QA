@@ -139,7 +139,7 @@ public class Task7{
 		result.clickElement(By.xpath(".//div[@class=\"comment\"]/a[@class=\"underline\"]"));			
 
 		// make a screenshot and save it to the project's directory
-		result.makeScreenshot("test-output/Task_7 - Screenshot.png");
+		result.makeScreenshot("target/screenshots/task_7.png");
 		Reporter.log("Taking a screenshot");
 	}	
 }
