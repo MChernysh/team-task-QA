@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
+import org.testng.Reporter;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 import jxl.Cell;
@@ -12,7 +13,6 @@ import jxl.Sheet;
 import jxl.Workbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 
 public class Task7{
 
@@ -40,7 +40,8 @@ public class Task7{
 		// sign in and close the annoying social media pop up
 		home.SignIN(login, password);
 		home.clickElement(By.xpath(".//a[@name=\"close\"]"));		
-		
+		Reporter.log("Log in: " + login + " Password: " + password);
+
 		// go to wish list page, check whether there are some and delete them
 		home.clickElement(By.xpath(".//a[@name=\"profile\"]"));
 		home.clickElement(By.xpath("//div[@class=\"title\"]/a[contains(text(), \"Списки желаний\")]"));
@@ -53,6 +54,7 @@ public class Task7{
 	public void tearDown(){
 		
 		home.deleteWishLists(By.xpath("//div[@class=\"cell wishlist-i-delete\"]/a[@name=\"wishlist-delete\"]"));
+		Reporter.log("Deleting wishlists");
 		driver.close();
 	}
 	
@@ -91,8 +93,10 @@ public class Task7{
 
 	@DataProvider(name = "data")
     public Object[][] createData1() throws Exception{
-        Object[][] retObjArr=getTableArray(".\\src\\test\\data\\test.xls", "Data", "test7Data");
-        return(retObjArr);
+        
+		Object[][] retObjArr = getTableArray(".\\src\\test\\data\\test.xls", "Data", "test7Data");
+        
+		return(retObjArr);
     }
 	
 	@Test (dataProvider = "data")
@@ -100,25 +104,31 @@ public class Task7{
 		
 		// clear the text box and search for the searchTerm
 		home.clearTextBox(By.xpath(".//div//input[@class=\"text\"]"));
-		home.sendText(By.xpath(".//div//input[@class=\"text\"]"), searchTerm); 						
+		home.sendText(By.xpath(".//div//input[@class=\"text\"]"), searchTerm);
+		Reporter.log("Searching for: " + searchTerm);
 		
 		// click "Submit" button and verify whether search results contain the searchTerm
 		ResultPage result = home.clickElement(By.xpath(".//button[@type=\"submit\"]")); 				
 		AssertJUnit.assertTrue(searchTerm.equals(result.getElementText(By.xpath(".//h1/span")))); 	 
+		Reporter.log("Validating: " + searchTerm);
 
 		// get the element's color and verify it
 		String color = driver.findElement(By.xpath(".//h1/span")).getCssValue("color");	
 		AssertJUnit.assertTrue(color.equals("rgba(50, 154, 28, 1)"));						
+		Reporter.log("Validating color: " + color);
 			
 		// get 3..5 search results and store them to the wish list
 		for(int i = 3; i <= 5; i++) {														
 																							 
 			if(isElementIn(By.xpath(".//table[" + i + "]//a[@name=\"towishlist\"]"))){
 				
+				String wishlist = "Список желаний " + (i-2);
+				
 				result.clickElement(By.xpath(".//table[" + i + "]//a[@name=\"towishlist\"]")); 				
 				result.clearTextBox(By.xpath(".//input[@name=\"wishlist_title\"]"));
-				result.sendText(By.xpath(".//input[@name=\"wishlist_title\"]"), "Список желаний " + (i-2));
-				result.clickElement(By.xpath(".//div[@class=\"submit\"]/button[@type=\"submit\"]"));	
+				result.sendText(By.xpath(".//input[@name=\"wishlist_title\"]"), wishlist);
+				result.clickElement(By.xpath(".//div[@class=\"submit\"]/button[@type=\"submit\"]"));
+				Reporter.log("Creating wishlist: " + wishlist);
 			
 			if(i < 5) 
 				result.clickElement(By.xpath(".//a[@name=\"close\"]"));
@@ -130,6 +140,7 @@ public class Task7{
 
 		// make a screenshot and save it to the project's directory
 		result.makeScreenshot("test-output/Task_7 - Screenshot.png");
+		Reporter.log("Taking a screenshot");
 	}	
 }
 
