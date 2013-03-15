@@ -16,7 +16,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook; 
@@ -24,7 +23,6 @@ import jxl.Workbook;
 public class Task11 {
 
 	private WebDriver driver= new FirefoxDriver();
-	HomePage homepage = new HomePage(driver);
 
 	@BeforeClass 
 	public void settingUp() {
@@ -47,13 +45,8 @@ public class Task11 {
 	
 	
 	@Test(dataProvider = "ExcelData") 
-	public void LogIn(String Login, String Password) {
-		driver.findElement(By.name("signin")).click();
-	  	driver.findElement(By.name("login")).clear();
-		driver.findElement(By.name("login")).sendKeys(Login);
-		driver.findElement(By.name("password")).clear(); 
-		driver.findElement(By.name("password")).sendKeys(Password);		
-		driver.findElement(By.xpath("//*[text()='Войти']")).click();
+	public void ddtTask11(String Login, String Password) {
+		logIN(Login, Password);
 		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
@@ -73,10 +66,10 @@ public class Task11 {
 	}
 	
 	
-	@Test(groups = { "Dima" })
+	@Test(groups="Dima")
 	public void task11() {
 		
-		homepage.SignIN("testatqc@gmail.com", "IF-025.ATQC");
+		logIN("testatqc@gmail.com", "IF-025.ATQC");
 		//Select "Computers" from main menu
 		driver.findElement(By.xpath(".//*[@id='computers-notebooks']")).click();
 
@@ -84,8 +77,7 @@ public class Task11 {
 		//Select "Ultrabooks"
 		driver.get("http://rozetka.com.ua/notebooks/c80004/filter/preset=light/");
 		// driver.findElement(By.linkText("Ультрабуки")).click();
-		// driver.findElement(By.xpath(".//*[@id='head_banner_container']/div[2]/div/div/div[1]/div/div[4]/div/div[1]/div[1]/ul/li[4]/a")).click();
-
+		
 		
 		//Check if product's name and tooltip ("alt") are equal
 		String tooltip = driver.findElement(By.xpath(".//*[@id='image_item255352']/a/img")).getAttribute("alt");
@@ -95,8 +87,6 @@ public class Task11 {
 		
 		//show products as a 'List'
 		driver.findElement(By.linkText("списком")).click();
-		// driver.get("http://rozetka.com.ua/notebooks/c80004/filter/preset=light;view=list/");
-		// driver.findElement(By.xpath(".//*[@id='head_banner_container']/div[2]/div/div/div[2]/div/div[3]/div[2]/a")).click();
 
 		
 		//Select the third notebook from top list
@@ -112,13 +102,13 @@ public class Task11 {
 		String href = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getAttribute("href");
 		
 		//Check the popup and show its contents 
-		driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/p")).getText();
-//		System.out.println("Popup window contains such information: " + "\n" + "'" + popup + "'");		
+		String popup = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/p")).getText();
+ 		System.out.println("Popup window contains such information: " + "\n" + "'" + popup + "'");
+ 		Reporter.log("Popup window contains such information: " + "\n" + popup);
 		
 		//Check the hyperlink in popup and show its content
-		driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getText();
-//		System.out.println("Hyperlink exists!");
-		Reporter.log("Hyperlink exists!");
+		String hlink = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getText();
+		Reporter.log("Hyperlink '" + hlink + "' in popup window exists!");
 		
 		//Make screenshot
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -132,6 +122,7 @@ public class Task11 {
 		
 		//Load the page (the third element in top list)
 		driver.get(href);
+		
 		//Compare product's names in previous and new page 
 		String prdctname = driver.findElement(By.xpath(".//*[@id='head_banner_container']//h1")).getText();		
 		compare(prdctname,topthree);
@@ -139,8 +130,18 @@ public class Task11 {
 
 		//Check the USD price
 		String usd = driver.findElement(By.xpath(".//*[@id='head_banner_container']//div/span/div")).getText();
-//		System.out.println("The price is: " + usd);
 		Reporter.log("The price is: " + usd);
+	}
+	
+	
+	
+	private void logIN(String login, String password) {
+		driver.findElement(By.name("signin")).click();
+	  	driver.findElement(By.name("login")).clear();
+		driver.findElement(By.name("login")).sendKeys(login);
+		driver.findElement(By.name("password")).clear(); 
+		driver.findElement(By.name("password")).sendKeys(password);		
+		driver.findElement(By.xpath("//*[text()='Войти']")).click();
 	}
 	
 	
@@ -148,12 +149,13 @@ public class Task11 {
 	private void compare(String frststr, String scndstr) {
 		try {
 			Assert.assertEquals(frststr, scndstr);
+			Reporter.log("Strings \n" + frststr + "\n and \n" + scndstr + "\n are equal!");
 		} 
 		catch (AssertionError e) {
-//			System.out.println("Strings \n" + frststr + "\n and \n" + scndstr + "\n are not equal!");
 			Reporter.log("Strings \n" + frststr + "\n and \n" + scndstr + "\n are not equal!");
 		}
 	}
+	
 	
 	
 	public String[][] getTableArray(String xlFilePath, String sheetName, String tableName){
@@ -170,10 +172,8 @@ public class Task11 {
 
             endRow=tableEnd.getRow();
             endCol=tableEnd.getColumn();
-//          System.out.println("startRow=" + startRow + ", endRow=" + endRow + ", " + 
-//                  "startCol=" + startCol + ", endCol=" + endCol);
             Reporter.log("startRow=" + startRow + ", endRow=" + endRow + ", " + 
-                    "startCol=" + startCol + ", endCol=" + endCol);
+                         "startCol=" + startCol + ", endCol=" + endCol);
             tabArray=new String[endRow-startRow-1][endCol-startCol-1];
             ci=0;
 
@@ -185,7 +185,6 @@ public class Task11 {
             }
         }
         catch (Exception e) {
-//          System.out.println("Error in getTableArray()!");
             Reporter.log("Error in getTableArray()!");
         }
 
