@@ -49,6 +49,7 @@ public class Task7 {
 		
 		if (isElementIn(By.xpath("//div[@class='cell wishlist-i-delete']/a[@name='wishlist-delete']"))) {
 			homePage.deleteWishLists(By.xpath("//div[@class='cell wishlist-i-delete']/a[@name='wishlist-delete']"));
+			Reporter.log("Deleting wish lists...");
 		}
 	}
 	
@@ -56,7 +57,7 @@ public class Task7 {
 	public void tearDown() {
 		
 		homePage.deleteWishLists(By.xpath("//div[@class='cell wishlist-i-delete']/a[@name='wishlist-delete']"));
-		Reporter.log("Deleting wish lists");
+		Reporter.log("Deleting wish lists...");
 		driver.close();
 	}
 	
@@ -96,7 +97,7 @@ public class Task7 {
 	@DataProvider(name = "data")
     public Object[][] createData() throws Exception {
         
-		Object[][] retObjArr = getTableArray("./src/test/data/test.xls", "Data", "test7Data");
+		Object[][] retObjArr = getTableArray(".\\src\\test\\data\\test.xls", "Data", "test7Data");
         
 		return(retObjArr);
     }
@@ -154,7 +155,7 @@ public class Task7 {
 		resultPage.clickElement(By.xpath(".//div[@class='comment']/a[@class='underline']"));			
 
 		// make a screenshot and save it to the project's directory
-		resultPage.makeScreenshot("target/screenshots/task_7.png");
+		resultPage.makeScreenshot(".\\target\\screenshots\\task_7.png");
 		Reporter.log("Taking a screenshot");
 	}	
 }
