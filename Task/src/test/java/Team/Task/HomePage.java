@@ -1,6 +1,8 @@
 package Team.Task;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -133,7 +135,29 @@ public class HomePage {
 		}
 
 	}
-
+	public boolean isElementPresent1(By by) {
+		List<WebElement> act = driver.findElements(by);
+	
+		if (!act.isEmpty()) 
+			return true; 
+		else 
+			return false;
+	}
+String getElementText(By by) {
+		
+		String text = driver.findElement(by).getText(); 
+		return text;
+	}
+	public int stringToInt(String str) {
+		
+		Pattern p = Pattern.compile("(\\d+)");
+        Matcher m = p.matcher(str);
+        int res = 0;
+        if (m.find()) { 
+        	res = Integer.valueOf(m.group(1));
+        }
+        return res;
+	}
 
 	public ResultPage clickElement(By by){
 

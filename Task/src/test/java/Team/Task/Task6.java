@@ -25,15 +25,15 @@ public class Task6 {
 
 
 @Test(groups = { "Orest" })
-public void LoginAc(){
-Log log=new Log(driver);
-log.Login(login, password);
+public void Test6(){
+HomePage home=new HomePage(driver);
+home.SignIN(login, password);
 driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
 String color = driver.findElement(By.xpath(".//*[@id='head_banner']/a")).getCssValue("background-color");
-Assert.assertTrue(color.equals("rgba(117, 0, 51, 1)"));
+Assert.assertTrue(color.equals("rgba(50, 154, 28, 1)"));
 String toolbarcolor = driver.findElement(By.className("hdr-tools")).getCssValue("background-color");
 Assert.assertTrue(toolbarcolor.equals("rgba(17, 73, 137, 1)"));
-log.LogOut();
+home.signOut();
 }
 	@BeforeTest
 	public void setUp(){
@@ -46,7 +46,7 @@ log.LogOut();
 	  private void tearDown() {
         File screenshot = ((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.FILE);
-       String path = "./target/screenshots/" + screenshot.getName();
+       String path = "./target/screenshots/Task6.png" ;
         try {
            FileUtils.copyFile(screenshot, new File(path));
         } catch (IOException e) {
