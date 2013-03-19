@@ -66,7 +66,7 @@ public class Task11 {
 	}
 	
 	
-	@Test(groups="Dima")
+	@Test
 	public void task11() {
 		
 		logIN("testatqc@gmail.com", "IF-025.ATQC");
@@ -110,6 +110,8 @@ public class Task11 {
 		String hlink = driver.findElement(By.xpath("html/body/div[6]/div/div/div[1]/div/a")).getText();
 		Reporter.log("Hyperlink '" + hlink + "' in popup window exists!");
 		
+		
+		
 		//Make screenshot
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
@@ -129,12 +131,11 @@ public class Task11 {
 		
 
 		//Check the USD price
-		String usd = driver.findElement(By.xpath(".//*[@id='head_banner_container']//div/span/div")).getText();
+		String usd = driver.findElement(By.xpath(".//*[@id='head_banner_container']//div[@class='pp-usd']")).getText();
 		Reporter.log("The price is: " + usd);
 	}
 	
-	
-	
+		
 	private void logIN(String login, String password) {
 		driver.findElement(By.name("signin")).click();
 	  	driver.findElement(By.name("login")).clear();
@@ -144,8 +145,7 @@ public class Task11 {
 		driver.findElement(By.xpath("//*[text()='Войти']")).click();
 	}
 	
-	
-	
+		
 	private void compare(String frststr, String scndstr) {
 		try {
 			Assert.assertEquals(frststr, scndstr);
@@ -190,7 +190,5 @@ public class Task11 {
 
         return(tabArray);
     }
-
-
 		
 }
