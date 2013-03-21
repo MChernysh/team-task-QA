@@ -18,7 +18,7 @@ public class TestCase10 {
 		driver.get("http://rozetka.com.ua");
 	}
 	
-	@Test(groups = { "Mykola" })
+	@Test
 	public void testCase10()		{
 		System.out.println("Start testing");
 		TestCase10P2 logo = LogIn("mchernatqc@gmail.com", "IF-025ATQC");

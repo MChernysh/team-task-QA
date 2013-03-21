@@ -21,8 +21,10 @@ public class HomePage {
 		sendText(By.name("login"), login);
 		sendText(By.name("password"), password);
 		clickElement(By.xpath("//*[text()='Войти']"));
-		clickElement(By.xpath(".//a[@name=\"close\"]"));
-		Reporter.log("Log in: " + login + " Password: " + password);
+		if (validateElement(By.xpath(".//a[@name=\"close\"]"))) {
+			clickElement(By.xpath(".//a[@name=\"close\"]"));
+		}
+                Reporter.log("Log in: " + login + " Password: " + password);
 	}
 	public void signIN() {
 
@@ -30,8 +32,10 @@ public class HomePage {
 		sendText(By.name("login"), "testatqc@gmail.com");
 		sendText(By.name("password"), "IF-025.ATQC");
 		clickElement(By.xpath("//*[text()='Войти']"));
-		clickElement(By.xpath(".//a[@name=\"close\"]"));
-		Reporter.log("Log in:  testatqc@gmail.com // Password: IF-025.ATQC");
+		if (validateElement(By.xpath(".//a[@name=\"close\"]"))) {
+			clickElement(By.xpath(".//a[@name=\"close\"]"));
+		}
+                Reporter.log("Log in:  testatqc@gmail.com // Password: IF-025.ATQC"); 
 	}
 	
 	//move to personal cabinet
@@ -156,7 +160,11 @@ public class HomePage {
 	public String getTextFrom(By by) {
 		isElementPresent(by);
 		return driver.findElement(by).getText();
-	}	
+	}
+	public String getTheAttribute(By by, String attribute) {		
+		String recivedAttribute = driver.findElement(by).getAttribute(attribute);
+		return recivedAttribute;
+	}
 }
 
 
