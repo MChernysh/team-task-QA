@@ -16,25 +16,27 @@ public class Task7 extends DDT {
 
 	private FirefoxDriver driver = new FirefoxDriver();
 	private String url = "http://rozetka.com.ua";
-	private String wishlistName = "Список желаний ";
-	private int productCount = 3;	// Goods number to be added to the wish list
+	private String wishlistName = "Test Wishlist ";
+	
+	// Number of goods to be added to the wish list
+	private int numberOfGoods = 3;	
 
 	HomePage homePage = new HomePage(driver);
 	WebDriverWait wait = new WebDriverWait(driver, 10);
 	
-	public boolean isElementIn(By by) {
+	public boolean isElementPresent(By locator) {
 		
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		boolean present = driver.findElements(by).size() != 0;
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		boolean isElementPresent = driver.findElements(locator).size() != 0;
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
-		return present;
+		return isElementPresent;
 	}
 	
-	public ResultPage doSearch(String searchTerm) {
+	public ResultPage searchForCriteria(String searchCriteria) {
 		
-		homePage.sendText(By.xpath("//div//input[@class='text']"), searchTerm);
-		Reporter.log("Searching for ... " + searchTerm);
+		homePage.sendText(By.xpath("//div//input[@class='text']"), searchCriteria);
+		Reporter.log("Searching for ... " + searchCriteria);
 		
 		return homePage.clickElement(By.xpath("//div[@class='header']//button[@type='submit']"));
 	}
@@ -47,9 +49,9 @@ public class Task7 extends DDT {
 		Reporter.log("Entering the wish list page ... ");
 	}
 	
-	public void createWishlist(String wishlistName, int wishlistNum) {
+	public void createWishlists(String wishlistName, int numberOfWishlists) {
 	
-		for (int i = 1; i <= wishlistNum; i++) {
+		for (int i = 1; i <= numberOfWishlists; i++) {
 			homePage.clickElement(By.xpath(".//*[@id='create_wishlist_button']"));
 			homePage.sendText(By.xpath(".//*[@id='wishlist_create_input']"), wishlistName + i);
 			homePage.clickElement(By.xpath(".//*[@id='create_wishlist_block']//input[@class='submit']"));
@@ -60,17 +62,17 @@ public class Task7 extends DDT {
 		
 	public void checkAndDeleteWishlists() {
 		
-		if (isElementIn(By.xpath("//div[@class='cell wishlist-i-delete']/a"))) { 
+		if (isElementPresent(By.xpath("//div[@class='cell wishlist-i-delete']/a"))) { 
 			homePage.deleteWishLists(By.xpath("//div[@class='cell wishlist-i-delete']/a"));
 			
 			Reporter.log("Deleting wish lists ... ");
 		}
 	}
 	
-	public void addGoodsToWishlist(int goodsCount, int offset) {
-
-		for (int i = 1; i <= goodsCount; i++) {														
-			if (isElementIn(By.xpath("//table[" + (i + offset) + "]//table//a[@name='towishlist']"))) {
+	public void addGoodsToWishlist(int numberOfGoods, int offset) {
+		
+		for (int i = 1; i <= numberOfGoods; i++) {														
+			if (isElementPresent(By.xpath("//table[" + (i + offset) + "]//table//a[@name='towishlist']"))) {
 				homePage.clickElement(By.xpath("//table[" + (i + offset) + "]//table//a[@name='towishlist']")); 
 				homePage.clickElement(By.xpath(".//label[contains(text(),'" + (wishlistName + i) + "')]"));
 				homePage.clickElement(By.xpath("//div[@class='submit']//button"));	
@@ -81,22 +83,22 @@ public class Task7 extends DDT {
 		}
 	}
 	
-	public String[] readWishlistGoodsTitles(int count) {
+	public String[] readWishlistGoodsTitles(int numberOfGoodsTitles) {
 		
 		ResultPage resultPage = new ResultPage(driver);
-		String[] goodsNames = new String[count];
+		String[] arrayOfGoodsTitles = new String[numberOfGoodsTitles];
 		
-		for (int i = 0; i < count; i++) {
-			goodsNames[i] = resultPage.getElementText(By.xpath("(.//div[@class='goods tile']//div[@class='title'])[" + (i+1) + "]"));
+		for (int i = 0; i < numberOfGoodsTitles; i++) {
+			arrayOfGoodsTitles[i] = resultPage.getElementText(By.xpath("(.//div[@class='goods tile']//div[@class='title'])[" + (i+1) + "]"));
 		}
 		Reporter.log("Reading the wish list goods titles ... ");
 
-		return goodsNames;
+		return arrayOfGoodsTitles;
 	}
 	
-	public void addGoodsToCart(int count) {
+	public void addGoodsToCart(int numberOfGoods) {
 		
-		for (int i = 1; i <= count; i++) {
+		for (int i = 1; i <= numberOfGoods; i++) {
 			
 			homePage.clickElement(By.xpath("//button[@name='topurchasesfromprofilewishlist']"));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='cart-popup']//h2")));
@@ -104,7 +106,7 @@ public class Task7 extends DDT {
 			homePage.clickElement(By.xpath(".//*[@id='cart-popup']//div[@class='close']/a"));
 			driver.navigate().back();
 			
-			if(i < count) {
+			if(i < numberOfGoods) {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@name='topurchasesfromprofilewishlist']")));	
 			}
 		}
@@ -112,11 +114,11 @@ public class Task7 extends DDT {
 	}
 	
 	@DataProvider(name = "data")
-    public Object[][] createData() throws Exception {
+    public Object[][] createExcelData() throws Exception {
         
-		Object[][] retObjArr = getTableArray(".\\src\\test\\data\\test.xls", "Data", "test7Data");
+		Object[][] arrayOfExcelData = getTableArray(".\\src\\test\\data\\test.xls", "Data", "test7Data");
         
-		return retObjArr;
+		return arrayOfExcelData;
     }
 		
 	@BeforeClass
@@ -129,33 +131,25 @@ public class Task7 extends DDT {
 		homePage.signIN();
 		goToWishlistPage();
 		checkAndDeleteWishlists();
-		createWishlist(wishlistName, productCount);
+		createWishlists(wishlistName, numberOfGoods);
 		
-	}
-	
-	@AfterClass
-	public void tearDown() {
-	
-		checkAndDeleteWishlists();
-		homePage.signOut();
-		driver.close();
 	}
 	
 	@Test(dataProvider = "data") 
-	public void Test_01 (String searchTerm) {
+	public void Test_01(String searchCriteria) {
 		
 		// search for the searchTerm and verify the search results
-		ResultPage resultPage = doSearch(searchTerm);
-		Assert.assertTrue(searchTerm.equals(resultPage.getElementText(By.xpath(".//h1/span"))));
-		Reporter.log("Validating ... " + searchTerm);
+		ResultPage resultPage = searchForCriteria(searchCriteria);
+		Assert.assertTrue(searchCriteria.equals(resultPage.getElementText(By.xpath(".//h1/span"))));
+		Reporter.log("Validating ... " + searchCriteria);
 
 		// get the element's color and verify it
-		String color = driver.findElement(By.xpath("//h1/span")).getCssValue("color");	
-		Assert.assertTrue(color.equals("rgba(50, 154, 28, 1)"));						
-		Reporter.log("Validating color ... " + color);
+		String colorOfSearchResultsTitle = driver.findElement(By.xpath("//h1/span")).getCssValue("color");	
+		Assert.assertTrue(colorOfSearchResultsTitle.equals("rgba(50, 154, 28, 1)"));						
+		Reporter.log("Validating color ... " + colorOfSearchResultsTitle);
 
 		// get 3 search results beginning with the third position and store them to the wish list
-		addGoodsToWishlist(productCount, 2);
+		addGoodsToWishlist(numberOfGoods, 2);
 		
 		goToWishlistPage();
 		resultPage.makeScreenshot(".\\target\\screenshots\\task7_test01.png");
@@ -168,15 +162,15 @@ public class Task7 extends DDT {
 		goToWishlistPage();
 		
 		// get wish lists goods number 
-		int productCount = resultPage.getElementCount(By.xpath(".//div[@class='goods tile']//div[@class='title']"));
-		Reporter.log(productCount + " products in the wish list");
+		int numberOfGoodsTitles = resultPage.getNumberOfElements(By.xpath(".//div[@class='goods tile']//div[@class='title']"));
+		Reporter.log(numberOfGoodsTitles + " products in the wish list");
 		
 		// verify whether the wish list goods have UAH prices and if they can be bought
-		for (int i = 1; i <= productCount; i++) {
-			if (isElementIn(By.xpath("//table[" + (i + 1) + "]//div[@class='status']/span[@class='available']"))) {
+		for (int i = 1; i <= numberOfGoodsTitles; i++) {
+			if (isElementPresent(By.xpath("//table[" + (i + 1) + "]//div[@class='status']/span[@class='available']"))) {
 				
-				Assert.assertTrue(isElementIn(By.xpath("(//div[@class='price']/div[@class='uah'])[" + i +"]")));
-				Assert.assertTrue(isElementIn(By.xpath("(//button[@name='topurchasesfromprofilewishlist'])[" + i + "]")));
+				Assert.assertTrue(isElementPresent(By.xpath("(//div[@class='price']/div[@class='uah'])[" + i +"]")));
+				Assert.assertTrue(isElementPresent(By.xpath("(//button[@name='topurchasesfromprofilewishlist'])[" + i + "]")));
 				Reporter.log("Asserting UAH prices and purchase buttons ... ");
 			}
 		}	
@@ -189,26 +183,35 @@ public class Task7 extends DDT {
 		goToWishlistPage();
 
 		// get wish lists goods number 
-		int wishlistGoodsCount = resultPage.getElementCount(By.xpath(".//div[@class='goods tile']//div[@class='title']"));
+		int numberOfGoodsInWishlist = resultPage.getNumberOfElements(By.xpath(".//div[@class='goods tile']//div[@class='title']"));
 		
 		// read wish lists goods titles and add them to the purchase cart 
-		String[] wishlistGoodsTitles = readWishlistGoodsTitles(wishlistGoodsCount);
-		addGoodsToCart(wishlistGoodsCount);
+		String[] arrayOfGoodsTitlesInWishlist = readWishlistGoodsTitles(numberOfGoodsInWishlist);
+		addGoodsToCart(numberOfGoodsInWishlist);
 
 		// go to the purchase cart
 		resultPage.clickElement(By.xpath(".//div[@class='header']//a[@name='open_cart']"));
 		
 		// get cart goods number, verify cart goods and wish list goods titles
-		String cartGoodsTitle;
-		int cartGoodsCount = resultPage.getElementCount(By.xpath("//div[@id='cart-popup']//div[@class='title']/a[@name='goods-link']"));
+		String goodsTitleInTheCart;
+		int numberOfGoodsInCart = resultPage.getNumberOfElements(By.xpath("//div[@id='cart-popup']//div[@class='title']/a[@name='goods-link']"));
 		
-		if(wishlistGoodsCount == cartGoodsCount) {
-			for (int i = 0; i < cartGoodsCount; i++) {
-				cartGoodsTitle = resultPage.getElementText(By.xpath("(//div[@id='cart-popup']//div[@class='title']/a[@name='goods-link'])[" + (i+1) + "]"));
-				Assert.assertTrue( wishlistGoodsTitles[i].equals(cartGoodsTitle) );
+		if(numberOfGoodsInWishlist == numberOfGoodsInCart) {
+			for (int i = 0; i < numberOfGoodsInCart; i++) {
+				goodsTitleInTheCart = resultPage.getElementText(By.xpath("(//div[@id='cart-popup']//div[@class='title']/a[@name='goods-link'])[" + (i+1) + "]"));
+				Assert.assertTrue( arrayOfGoodsTitlesInWishlist[i].equals(goodsTitleInTheCart) );
 			}
 			Reporter.log("Verifying purchase cart goods titles ... ");
 		}
 		resultPage.makeScreenshot(".\\target\\screenshots\\task7_test03.png");
+	}
+	
+	@AfterClass
+	public void tearDown() {
+		if (driver != null) {
+			checkAndDeleteWishlists();
+			homePage.signOut();
+			driver.close();
+		}
 	}
 }

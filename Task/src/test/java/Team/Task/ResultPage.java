@@ -7,13 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ResultPage {
 	
@@ -24,32 +21,31 @@ public class ResultPage {
 		this.driver = driver;
 	}
 	
-	String getElementText(By by) {
+	public String getElementText(By locator) {
 		
-		String text = driver.findElement(by).getText(); 
-		return text;
+		String elementText = driver.findElement(locator).getText(); 
+		
+		return elementText;
 	}
 	
-	public void clickElement(By by) {
+	public void clickElement(By locator) {
 		
-		driver.findElement(by).click();
+		driver.findElement(locator).click();
 	}
 	
-	public void sendText(By by, String text) {
+	public void sendText(By locator, String text) {
 		
-		driver.findElement(by).sendKeys(text);
+		driver.findElement(locator).sendKeys(text);
 	}
 
-
-
-	public boolean isElementPresent(By by) {
-		List<WebElement> act = driver.findElements(by);
-	
-		if (!act.isEmpty()) 
-			return true; 
-		else 
-			return false;
-	}
+//	public boolean isElementPresent(By by) {
+//		List<WebElement> act = driver.findElements(by);
+//	
+//		if (!act.isEmpty()) 
+//			return true; 
+//		else 
+//			return false;
+//	}
 	
 	public void clearTextBox(By by) {
 		
@@ -70,7 +66,7 @@ public class ResultPage {
 
 	}
 	
-	public int getElementCount(By by) {
+	public int getNumberOfElements(By by) {
 		
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		int count = driver.findElements(by).size();
