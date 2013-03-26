@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Teamtask1" parallel="false" verbose="1">  
+  
+  <listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+
+<!-- Варіант запуску по одному тесту 
+  <test name="AllInOne"   >
+  	 <packages>
+    	<package name="Team.Task" />
+   	 </packages>
+  </test>
+-->
+
+  <test name="Test1">
+    <classes>   
+      <class name="Team.Task.Task1"/>
+    </classes>
+  </test> 
+  
+  <test name="Test2">
+    <classes>   
+      <class name="Team.Task.Task2"/>
+    </classes>
+  </test>
+  
+  <test name="Test3">
+    <classes>   
+      <class name="Team.Task.Task3"/>
+    </classes>
+  </test> 
+  
+  <test name="Test4">
+    <classes>   
+      <class name="Team.Task.Task4"/>
+    </classes>
+  </test>
+  
+  <test name="Test5">
+    <classes>   
+      <class name="Team.Task.Task5"/>
+    </classes>
+  </test> 
+  
+  <test name="Test6">
+    <classes>   
+      <class name="Team.Task.Task6"/>
+    </classes>
+  </test>
+    
+  <test name="Test7">
+    <classes>   
+      <class name="Team.Task.Task7"/>
+    </classes>
+  </test> 
+  
+  <test name="Test8">
+    <classes>   
+      <class name="Team.Task.Task8"/>
+    </classes>
+  </test>
+  
+<!--   
+  <test name="Test9">
+    <classes>   
+      <class name="Team.Task.Task9"/>
+    </classes>
+  </test> 
+-->  
+  <test name="Test10">
+    <classes>   
+      <class name="Team.Task.TestCase10"/>
+    </classes>
+  </test>
+
+   <test name="Test11">
+    <classes>   
+      <class name="Team.Task.Task11"/>
+    </classes>
+  </test> 
+
+   <test name="Test12">
+    <classes>   
+      <class name="Team.Task.Task12"/>
+    </classes>
+   </test> 
+    
+</suite>  
+
+  
